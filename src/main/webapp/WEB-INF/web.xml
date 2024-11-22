@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+         version="3.0">
+    
+    <!-- Display Name -->
+    <display-name>PostKuy</display-name>
+
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>home.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Context Parameters -->
+    <context-param>
+        <param-name>jdbcURL</param-name>
+        <param-value>jdbc:mysql://localhost:3306/postkuy</param-value>
+    </context-param>
+    <context-param>
+        <param-name>jdbcUser</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>jdbcPassword</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostCreateServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.PostCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostCreateServlet</servlet-name>
+        <url-pattern>/postCreate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostDeleteServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.PostDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostDeleteServlet</servlet-name>
+        <url-pattern>/postDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommentCreateServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.CommentCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentCreateServlet</servlet-name>
+        <url-pattern>/commentCreate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommentDeleteServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.CommentDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentDeleteServlet</servlet-name>
+        <url-pattern>/commentDelete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VoteServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.VoteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VoteServlet</servlet-name>
+        <url-pattern>/vote</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.UserProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <url-pattern>/userProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.postkuy.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!-- Filters -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.postkuy.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/postCreate</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/postDelete</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/commentCreate</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/commentDelete</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/vote</url-pattern>
+    </filter-mapping>
+    
+
+    <!-- Error Page Configuration -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
+</web-app>
